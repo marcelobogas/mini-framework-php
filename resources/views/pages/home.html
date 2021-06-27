@@ -1,0 +1,123 @@
+<div class="container p-3" style="font-size: 14px;">
+    <div class="row d-flex justify-content-center">
+        <div class="col-10">
+            <div class="card">
+                <div class="card-header alert-primary">
+                    <h5 class="card-title text-center">Preencha o Formulário para realizar sua inscrição</h5>
+                    <div class="d-flex justify-content-around">
+                        <div>
+                            <span>Já fez sua inscrição?</span>&nbsp;
+                            <a name="btnAcessar" class="btn-sm btn-success " style="text-decoration: none;" href=""
+                                role="button">Acessar</a>
+                        </div>
+                        <div>
+                            <span>Esqueci a senha!</span>&nbsp;
+                            <a name="btnResetPassword" class="btn-sm btn-secondary " style="text-decoration: none;"
+                                href="#" role="button">Alterar</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body alert-dark">
+                    <form>
+                        <div class="row">
+                            <div class="form-group col-md-9">
+                                <label for="inputName">Nome</label><span class="text-danger">*</span>
+                                <input type="text" class="form-control" id="inputName" required>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="inputCEP">Data de Nascimento</label><span class="text-danger">*</span>
+                                <input type="date" class="form-control" id="inputCEP" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="inputRg">Rg</label>
+                                <input type="email" class="form-control" id="inputRg">
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputCpf">CPF</label><span class="text-danger">*</span>
+                                <input type="password" class="form-control" id="inputCpf" required>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label for="inputTelefone">Telefone/Celular</label><span class="text-danger">*</span>
+                                <input type="password" class="form-control" id="inputTelefone" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputAddress">Endereço</label><span class="text-danger">*</span>
+                            <input type="text" class="form-control" id="inputAddress" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="inputEstado">Estado</label><span class="text-danger">*</span>
+                                <select id="inputEstado" class="form-control" required>
+                                    <option selected>Escolher...</option>
+                                    <option>...</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputCity">Cidade</label><span class="text-danger">*</span>
+                                <input type="text" class="form-control" id="inputCity" required>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="inputCEP">CEP</label><span class="text-danger">*</span>
+                                <input type="text" class="form-control" id="inputCEP" required>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-primary" role="alert">
+                            <span>Escolha o Curso que deseja realizar</span>
+                            <div class="form-row pt-2">
+                                <div class="form-group col-md-4">
+                                    <label for="inputEstado">Primeira Opção</label><span class="text-danger">*</span>
+                                    <select id="inputEstado" class="form-control" required>
+                                        <option selected>Escolher...</option>
+                                        <option>...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputEstado">Segunda Opção</label><span class="text-danger">*</span>
+                                    <select id="inputEstado" class="form-control" required>
+                                        <option selected>Escolher...</option>
+                                        <option>...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputEstado">Período</label><span class="text-danger">*</span>
+                                    <select id="inputEstado" class="form-control" required>
+                                        <option selected>Escolher...</option>
+                                        <option>...</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-primary" role="alert">
+                            <span>Informações de acesso para acompanhamento de sua inscrição</span>
+                            <div class="form-row pt-2">
+                                <div class="form-group col-md-8">
+                                    <label for="inputEmail" class="text-dark">Email</label><span
+                                        class="text-danger">*</span>
+                                    <input type="email" class="form-control" id="inputEmail" required>
+                                    <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu
+                                        email,
+                                        com ninguém.</small>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="inputPassword" class="text-dark">Senha</label><span
+                                        class="text-danger">*</span>
+                                    <input type="password" class="form-control" id="inputPassword" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary">Realizar Inscrição</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

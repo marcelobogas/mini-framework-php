@@ -1,0 +1,13 @@
+#Bloquear a listagem dos arquivos
+Options -Indexes
+
+#Liga a Rewrite
+RewriteEngine on
+
+#URL Base
+RewriteBase /
+
+#Regra de Rewrite
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ ./index.php [QSA,NC]
