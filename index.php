@@ -1,9 +1,13 @@
 <?php
 
 use App\Http\Router;
+use App\Core\Enviroments;
 
 require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/config/app.php';
+include __DIR__ . '/config/app.php';
+
+ /* Carrega as variáveis de ambiente */
+Enviroments::load(__DIR__);
 
 /* Inicia o Router */
 $objRouter = new Router(url);
