@@ -3,21 +3,23 @@
         <div class="col-10">
             <div class="card">
                 <div class="card-header alert-primary">
-                    <h5 class="card-title text-center">Preencha o Formulário para realizar sua inscrição</h5>
-                    <div class="d-flex justify-content-around">
-                        <div>
-                            <span>Já fez sua inscrição?</span>&nbsp;
-                            <a name="btnAcessar" class="btn-sm btn-success " style="text-decoration: none;" href=""
-                                role="button">Acessar</a>
-                        </div>
-                        <div>
-                            <span>Esqueci a senha!</span>&nbsp;
-                            <a name="btnResetPassword" class="btn-sm btn-secondary " style="text-decoration: none;"
-                                href="#" role="button">Alterar</a>
+                    <h5 class="card-title text-center">PREENCHA O FORMULÁRIO PARA REALIZAR SUA INSCRIÇÃO</h5>
+                </div>
+
+                <div class="card-body alert-dark">
+                    <div class="alert alert-primary text-center" role="alert">
+                        <span>Se você já fez sua inscrição, realize o Login, e acompanhe o andamento do processo</span>
+                        <div class="d-flex justify-content-center pt-2 pb-2">
+                            <div class="pr-3">
+                                <a name="btnResetPassword" class="btn btn-secondary " style="text-decoration: none;"
+                                    href="{{url}}/reset-password" role="button">ESQUECI A SENHA</a>
+                            </div>
+                            <div class="pr-3">
+                                <a name="btnAcessar" class="btn btn-success " style="text-decoration: none;"
+                                    href="{{url}}/login" role="button">ACESSAR O SISTEMA</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-body alert-dark">
                     <form>
                         <div class="row">
                             <div class="form-group col-md-9">

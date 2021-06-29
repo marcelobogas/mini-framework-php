@@ -51,8 +51,8 @@ class Database
         try {
             $this->connection = new PDO('mysql:host' . self::HOST . ';dbname=' . self::DBNAME . ';port=' . self::PORT, self::USER, self::PASS);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $ex) {
-            die('ERROR: ' . $ex->getMessage());
+        } catch (PDOException $e) {
+            die('ERROR: ' . $e->getMessage());
         }
     }
 

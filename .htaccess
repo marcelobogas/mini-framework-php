@@ -10,4 +10,5 @@ RewriteBase /
 #Regra de Rewrite
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ ./index.php [QSA,NC]
+#RewriteRule ^(.*)$ /mini-framework-php/index.php [QSA,NC]
+RewriteRule ^(.*)$ /mini-framework-php/index.php?idPagina=$1
