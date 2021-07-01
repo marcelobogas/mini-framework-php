@@ -10,11 +10,11 @@ class Database
     /**
      * Credenciais de acesso para o banco de dados
      */
-    const HOST = 'localhost';
-    const DBNAME = 'mini-framework-php';
-    const USER = 'root';
-    const PASS = '';
-    const PORT = 3306;
+    const HOST = getenv('DB_HOST');
+    const DBNAME = getenv('DB_DATABASE');
+    const USER = getenv('DB_USERNAME');
+    const PASS = getenv('DB_PASSWORD');
+    const PORT = getenv('DB_PORT');
 
     /**
      * Nome da tabela a ser manipulada

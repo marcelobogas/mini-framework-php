@@ -4,6 +4,7 @@ namespace App\Http;
 
 use Closure;
 use Exception;
+use ReflectionFunction;
 
 class Router
 {
@@ -49,6 +50,10 @@ class Router
     private function setPrefix()
     {
         $parseUrl = parse_url($this->url);
+        if (getenv('SystemRoot') == 'C:\Windows') {
+            /* S.O WINDOWS */
+            $parseUrl = substr_replace($parseUrl, '', -1);
+        }         
 
         /* Define o prefixo */
         $this->prefix = $parseUrl['path'] ?? '';
@@ -78,6 +83,7 @@ class Router
 
         /* Padrão de validação das variáveis */
         $patternVariable = '/{(.*?)}/';
+
         if (preg_match_all($patternVariable, $route, $matches)) {
             $route = preg_replace($patternVariable, '(.*?)', $route);
             $params['variables'] = $matches[1];
@@ -171,7 +177,15 @@ class Router
         /* Valida as Rotas */
         foreach ($this->routes as $patternRoute => $methods) {
             /* Verifica se a URI bate com o padrão */
-            if (preg_match($patternRoute, $uri)) {
+            if (preg_match($patternRoute, $uri, $matches)) {
+                /* Remove a primeira posição */
+                unset($matches[0]);
+
+                /* Variáveis processadas */
+                $keys = $methods[$httpMethod]['variables'];
+                $methods[$httpMethod]['variables'] = array_combine($keys, $matches);
+                $methods[$httpMethod]['variables']['request'] = $this->request;
+
                 /* Verifica o método */
                 if (isset($methods[$httpMethod])) {
                     /* Retorno dos parâmetros da Rota */
@@ -202,6 +216,14 @@ class Router
 
             /* Argumentos da função */
             $args = [];
+
+            /* Reflection */
+            $reflection = new ReflectionFunction($route['controller']);
+
+            foreach ($reflection->getParameters() as $parameter) {
+                $name = $parameter->getName();
+                $args[$name] = $route['variables'][$name] ?? '';
+            }
 
             /* Retorna a execução da função */
             return call_user_func_array($route['controller'], $args);

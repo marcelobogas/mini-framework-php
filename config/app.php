@@ -1,15 +1,15 @@
 <?php
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use App\Core\Enviroments;
 use App\Core\View;
 
-/* Definições globais utilizadas pelo projeto */
-define('url', 'http://localhost/mini-framework-php');
-define('database', url . '/database');
-define('assets', url . '/public/assets');
+ /* Carrega as variáveis de ambiente */
+ Enviroments::load(__DIR__ . '/../');
 
  /* Define valores padrão para as páginas ao iniciar o aplicativo */
  View::init([
-     'url'     => url,
-     'database' => database,
-     'assets'  => assets,
+     'url'     => getenv('APP_URL'),
+     'assets'  => getenv('APP_URL') . '/public/assets',
  ]);

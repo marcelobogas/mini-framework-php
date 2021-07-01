@@ -8,7 +8,7 @@
 
                 <div class="card-body alert-dark">
                     <div class="alert alert-primary text-center" role="alert">
-                        <span>Se você já fez sua inscrição, realize o Login, e acompanhe o andamento do processo</span>
+                        <span>Se você já fez sua inscrição, realize o login, e acompanhe o andamento do processo</span>
                         <div class="d-flex justify-content-center pt-2 pb-2">
                             <div class="pr-3">
                                 <a name="btnResetPassword" class="btn btn-secondary " style="text-decoration: none;"
@@ -16,39 +16,57 @@
                             </div>
                             <div class="pr-3">
                                 <a name="btnAcessar" class="btn btn-success " style="text-decoration: none;"
-                                    href="{{url}}/login" role="button">ACESSAR O SISTEMA</a>
+                                    href="{{url}}/login" role="button">LOGAR NO SISTEMA</a>
                             </div>
                         </div>
                     </div>
                     <form>
+                        <div class="text-center font-weight-bold text-uppercase pb-2">
+                            <span>Dados Pessoais</span>
+                        </div>
+
                         <div class="row">
                             <div class="form-group col-md-9">
-                                <label for="inputName">Nome</label><span class="text-danger">*</span>
-                                <input type="text" class="form-control" id="inputName" required>
+                                <label for="inputNome">Nome</label><span class="text-danger">*</span>
+                                <input type="text" class="form-control" id="inputNome" required>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="inputCEP">Data de Nascimento</label><span class="text-danger">*</span>
                                 <input type="date" class="form-control" id="inputCEP" required>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="form-group col-md-9">
+                                <label for="inputNomeSocial">Nome Social</label>
+                                <input type="text" class="form-control" id="inputNomeSocial">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="inputGenero">Sexo</label><span class="text-danger">*</span>
+                                <select id="inputGenero" class="form-control" required>
+                                    <option selected>Escolher...</option>
+                                    <option>Feminino</option>
+                                    <option>Masculino</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="inputRg">Rg</label>
-                                <input type="email" class="form-control" id="inputRg">
+                                <input type="text" class="form-control" id="inputRg">
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputCpf">CPF</label><span class="text-danger">*</span>
-                                <input type="password" class="form-control" id="inputCpf" required>
+                                <input type="text" class="form-control" id="inputCpf" required>
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputTelefone">Telefone/Celular</label><span class="text-danger">*</span>
-                                <input type="password" class="form-control" id="inputTelefone" required>
+                                <input type="text" class="form-control" id="inputTelefone" required>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="inputAddress">Endereço</label><span class="text-danger">*</span>
-                            <input type="text" class="form-control" id="inputAddress" required>
+                        <hr>
+                        <div class="text-center font-weight-bold text-uppercase pb-2">
+                            <span>Dados de Endereço</span>
                         </div>
 
                         <div class="form-row">
@@ -60,8 +78,8 @@
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
-                                <label for="inputCity">Cidade</label><span class="text-danger">*</span>
-                                <input type="text" class="form-control" id="inputCity" required>
+                                <label for="inputCidade">Cidade</label><span class="text-danger">*</span>
+                                <input type="text" class="form-control" id="inputCidade" required>
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputCEP">CEP</label><span class="text-danger">*</span>
@@ -69,38 +87,73 @@
                             </div>
                         </div>
 
+                        <div class="form-row">
+                            <div class="form-group col-md-10">
+                                <label for="inputAddress">Endereço</label><span class="text-danger">*</span>
+                                <input type="text" class="form-control" id="inputAddress" required>
+                            </div>
+                            <div class="form-group col-md-2">
+                                <label for="inputCEP">Número</label><span class="text-danger">*</span>
+                                <input type="text" class="form-control" id="inputCEP" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <label for="inputComplemento">Complemento</label>
+                                <input type="text" class="form-control" id="inputComplemento" required>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="inputBairro">Bairro</label><span class="text-danger">*</span>
+                                <input type="text" class="form-control" id="inputBairro" required>
+                            </div>
+                        </div>
+
                         <div class="alert alert-primary" role="alert">
+                            <div class="text-center font-weight-bold text-uppercase pb-2">
+                                <span>Dados do Curso</span>
+                            </div>
                             <span>Escolha o Curso que deseja realizar</span>
                             <div class="form-row pt-2">
                                 <div class="form-group col-md-4">
                                     <label for="inputEstado">Primeira Opção</label><span class="text-danger">*</span>
                                     <select id="inputEstado" class="form-control" required>
                                         <option selected>Escolher...</option>
-                                        <option>...</option>
+                                        <option>Opção 1</option>
+                                        <option>Opção 2</option>
+                                        <option>Opção 3</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputEstado">Segunda Opção</label><span class="text-danger">*</span>
                                     <select id="inputEstado" class="form-control" required>
                                         <option selected>Escolher...</option>
-                                        <option>...</option>
+                                        <option>Opção 1</option>
+                                        <option>Opção 2</option>
+                                        <option>Opção 3</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputEstado">Período</label><span class="text-danger">*</span>
                                     <select id="inputEstado" class="form-control" required>
                                         <option selected>Escolher...</option>
-                                        <option>...</option>
+                                        <option>Manhã</option>
+                                        <option>Tarde</option>
+                                        <option>Noite</option>
+                                        <option>Integral</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
 
                         <div class="alert alert-primary" role="alert">
+                            <div class="text-center font-weight-bold text-uppercase pb-2">
+                                <span>Dados de Acesso</span>
+                            </div>
                             <span>Informações de acesso para acompanhamento de sua inscrição</span>
                             <div class="form-row pt-2">
                                 <div class="form-group col-md-8">
-                                    <label for="inputEmail" class="text-dark">Email</label><span
+                                    <label for="inputEmail" class="text-dark">E-mail</label><span
                                         class="text-danger">*</span>
                                     <input type="email" class="form-control" id="inputEmail" required>
                                     <small id="emailHelp" class="form-text text-muted">Nunca vamos compartilhar seu
