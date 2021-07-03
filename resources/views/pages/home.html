@@ -74,7 +74,7 @@
                                 <label for="inputEstado">Estado</label><span class="text-danger">*</span>
                                 <select id="inputEstado" class="form-control" required>
                                     <option selected>Escolher...</option>
-                                    <option>...</option>
+                                    {{itensEstados}}
                                 </select>
                             </div>
                             <div class="form-group col-md-6">
@@ -137,10 +137,7 @@
                                     <label for="inputEstado">Período</label><span class="text-danger">*</span>
                                     <select id="inputEstado" class="form-control" required>
                                         <option selected>Escolher...</option>
-                                        <option>Manhã</option>
-                                        <option>Tarde</option>
-                                        <option>Noite</option>
-                                        <option>Integral</option>
+                                        {{itensPeriodos}}
                                     </select>
                                 </div>
                             </div>
@@ -167,10 +164,13 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer d-flex justify-content-end">
-                            <button type="submit" class="btn btn-primary">Realizar Inscrição</button>
-                        </div>
                     </form>
+                </div>
+                
+                <div class="card-footer alert-primary">
+                    <div class="card-footer d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary">Realizar Inscrição</button>
+                    </div>
                 </div>
             </div>
         </div>
