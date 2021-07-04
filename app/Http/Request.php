@@ -3,35 +3,35 @@
 namespace App\Http;
 
 class Request
-{    
+{
     /**
      * Método HTTP da requisição
      *
      * @var string
      */
     private $httpMethod;
-    
+
     /**
      * URI da página
      *
      * @var string
      */
     private $uri;
-    
+
     /**
      * Parâmetros da URL ($_GET)
      *
      * @var array
      */
     private $queryParams = [];
-    
+
     /**
      * Variáveis recebidas no POST da página
      *
      * @var array
      */
     private $postVars = [];
-    
+
     /**
      * Cabeçalho da requisição
      *
@@ -45,9 +45,22 @@ class Request
         $this->postVars    = $_POST ?? [];
         $this->headers     = getallheaders();
         $this->httpMethod  = $_SERVER['REQUEST_METHOD'] ?? '';
-        $this->uri         = $_SERVER['REQUEST_URI'] ?? '';
+        $this->setUri();
     }
-    
+
+    /**
+     * Método responsável por definir a URI
+     */
+    private function setUri()
+    {
+        /* URI completa (com GETs) */
+        $this->uri = $_SERVER['REQUEST_URI'] ?? '';
+
+        /* remove GETs da URI */
+        $xUri = explode('?', $this->uri);
+        $this->uri = $xUri[0];
+    }
+
     /**
      * Método responsável por retornar o método HTTP da requisição
      *
@@ -97,5 +110,5 @@ class Request
     {
         return $this->postVars;
     }
-    
+
 }

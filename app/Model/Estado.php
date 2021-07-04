@@ -13,6 +13,7 @@ class Estado
      * @param string $where
      * @param string $order
      * @param string $limit
+     * @param string $fields
      *
      * @return PDOStatement
      */

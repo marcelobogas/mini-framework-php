@@ -116,28 +116,24 @@
                             <span>Escolha o Curso que deseja realizar</span>
                             <div class="form-row pt-2">
                                 <div class="form-group col-md-4">
+                                    <label for="inputEstado">Período</label><span class="text-danger">*</span>
+                                    <select id="inputEstado" class="form-control" required>
+                                        <option selected>Escolher...</option>
+                                        {{itensPeriodos}}
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
                                     <label for="inputEstado">Primeira Opção</label><span class="text-danger">*</span>
                                     <select id="inputEstado" class="form-control" required>
                                         <option selected>Escolher...</option>
-                                        <option>Opção 1</option>
-                                        <option>Opção 2</option>
-                                        <option>Opção 3</option>
+                                        {{itensCurso}}
                                     </select>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputEstado">Segunda Opção</label><span class="text-danger">*</span>
                                     <select id="inputEstado" class="form-control" required>
                                         <option selected>Escolher...</option>
-                                        <option>Opção 1</option>
-                                        <option>Opção 2</option>
-                                        <option>Opção 3</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputEstado">Período</label><span class="text-danger">*</span>
-                                    <select id="inputEstado" class="form-control" required>
-                                        <option selected>Escolher...</option>
-                                        {{itensPeriodos}}
+                                        {{itensCurso}}
                                     </select>
                                 </div>
                             </div>
@@ -166,7 +162,7 @@
                         </div>
                     </form>
                 </div>
-                
+
                 <div class="card-footer alert-primary">
                     <div class="card-footer d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary">Realizar Inscrição</button>

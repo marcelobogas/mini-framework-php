@@ -6,6 +6,7 @@ use App\Core\Controller;
 use App\Core\View;
 use App\Model\Estado;
 use App\Model\Periodo;
+use App\Model\Curso;
 
 class HomeController extends Controller
 {
@@ -20,10 +21,36 @@ class HomeController extends Controller
         $content = View::render('pages/home', [
             'itensEstados' => self::getEstadosItens(),
             'itensPeriodos' => self::getPeriodosItens(),
+            'itensCurso' => self::getCursosItens(),
         ]);
 
         /* retorna a view da página */
         return parent::getPage('Mini Framework Php - Home', $content);
+    }
+
+    /**
+     * Método responsável por obter a renderização dos itens da Model Curso
+     * @return string
+     */
+    private static function getCursosItens()
+    {
+        $itens = '';
+
+        /* resultados da página */
+        $results = Curso::getCursos('ativo = "s"', 'descricao');
+
+        /* renderiza o item */
+        while ($objCurso = $results->fetchObject(Curso::class)) {
+            $itens .= View::render('pages/itemEstado', [
+                'id' => $objCurso->id,
+                'idPeriodo' => $objCurso->idPeriodo,
+                'descricao' => $objCurso->descricao,
+                'ativo' => $objCurso->ativo
+            ]);
+        }
+
+        /* retorna a lista de estados */
+        return $itens;
     }
 
     /**

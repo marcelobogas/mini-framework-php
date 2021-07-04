@@ -1,5 +1,6 @@
 <?php
 
+use App\Controller\Admin\CursoController;
 use App\Controller\Pages\HomeController;
 use App\Controller\Auth\LoginController;
 use App\Controller\Auth\ResetPasswordController;
@@ -30,5 +31,12 @@ $objRouter->get('/login', [
 $objRouter->get('/reset-password', [
     function () {
         return new Response(200, ResetPasswordController::getResetPassword());
+    }
+]);
+
+/* Rota de Cursos */
+$objRouter->get('/cursos', [
+    function ($request) {
+        return new Response(200, CursoController::getCurso($request));
     }
 ]);
