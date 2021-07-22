@@ -50,9 +50,9 @@ class Router
     private function setPrefix()
     {
         $parseUrl = parse_url($this->url);
-        if (getenv('SystemRoot') == 'C:\Windows') {
+        if (getenv('OS') == 'Windows_NT') {
             /* S.O WINDOWS */
-            $parseUrl = substr_replace($parseUrl, '', -1);
+            $parseUrl = substr_replace($parseUrl['path'], '', -1);
         }         
 
         /* Define o prefixo */
@@ -193,7 +193,7 @@ class Router
                 }
                 /* Método não permitido/definido */
                 throw new Exception("Método não permitido.", 405);
-            }
+            } 
         }
         throw new Exception("URL não encontrada", 404);
     }

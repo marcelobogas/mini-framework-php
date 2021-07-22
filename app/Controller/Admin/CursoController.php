@@ -11,6 +11,7 @@ class CursoController extends Controller
 {
     /**
      * Método responsável por retornar a view de Cursos
+     * 
      * @param  Request $request
      * @return string
      */
@@ -27,6 +28,7 @@ class CursoController extends Controller
 
     /**
      * Método responsável por obter a renderização dos itens da Model Curso
+     * 
      * @param Request $request
      * @return string
      */
@@ -50,10 +52,10 @@ class CursoController extends Controller
         /* renderiza o item */
         while ($objCurso = $results->fetchObject(Curso::class)) {
             $itens .= View::render('pages/itemEstado', [
-                'id' => $objCurso->id,
+                'id'        => $objCurso->id,
                 'idPeriodo' => $objCurso->idPeriodo,
                 'descricao' => $objCurso->descricao,
-                'ativo' => $objCurso->ativo
+                'ativo'     => $objCurso->ativo
             ]);
         }
 
@@ -63,6 +65,7 @@ class CursoController extends Controller
 
     /**
      * Método responsável por inserir um registro no banco
+     * 
      * @param  Request $request
      * @return string
      */
@@ -71,10 +74,10 @@ class CursoController extends Controller
         /* dados do POST */
         $postVars = $request->getPostVars();
 
-        $objCurso = new Curso();
+        $objCurso            = new Curso();
         $objCurso->idPeriodo = $postVars['idPeriodo'];
         $objCurso->descricao = $postVars['descricao'];
-        $objCurso->ativo = $postVars['ativo'];
+        $objCurso->ativo     = $postVars['ativo'];
         $objCurso->cadastrar();
 
         /* retorna a listagem da página Cursos */

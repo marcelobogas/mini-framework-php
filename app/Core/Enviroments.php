@@ -19,7 +19,7 @@ class Enviroments
 
         $lines = file($dir . '/.env');
         foreach ($lines as $line) {
-            if (getenv('SystemRoot') == 'C:\Windows') {
+            if (getenv('OS') == 'Windows_NT') {
                 /* S.O WINDOWS */
                 putenv($line);
             } else {
