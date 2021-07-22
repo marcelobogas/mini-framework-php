@@ -60,7 +60,8 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="inputTelefone">Telefone/Celular</label><span class="text-danger">*</span>
-                                <input type="text" class="form-control" id="inputTelefone" required>
+                                <input type="text" class="form-control" id="inputTelefone" required
+                                    onkeypress="mascara(this, '## #####-####')" maxlength="13">
                             </div>
                         </div>
 
@@ -83,7 +84,7 @@
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="inputCEP">CEP</label><span class="text-danger">*</span>
-                                <input type="text" class="form-control" id="inputCEP" required>
+                                <input type="text" class="form-control" id="inputCEP" required onkeypress="mascara(this, '#####-###')" maxlength="9">
                             </div>
                         </div>
 

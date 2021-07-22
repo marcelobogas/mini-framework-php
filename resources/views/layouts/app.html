@@ -9,7 +9,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{assets}}/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
     <style>
         body {
@@ -17,15 +17,26 @@
             padding: 0;
         }
     </style>
+
+    <script type="text/javascript">
+        function mascara(t, mask) {
+            var i = t.value.length;
+            var saida = mask.substring(1, 0);
+            var texto = mask.substring(i);
+            if (texto.substring(0, 1) !== saida) {
+                t.value += texto.substring(0, 1);
+            }
+        }
+    </script>
 </head>
 
 <body>
     <!-- Inclui o header nas páginas -->
-    {{header}} 
-    
+    {{header}}
+
     <!-- Inclui o conteúdo nas páginas -->
-    {{content}} 
-    
+    {{content}}
+
     <!-- Inclui o footer nas páginas -->
     {{footer}}
 

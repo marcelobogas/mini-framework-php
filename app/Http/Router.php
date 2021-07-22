@@ -50,10 +50,11 @@ class Router
     private function setPrefix()
     {
         $parseUrl = parse_url($this->url);
+
         if (getenv('OS') == 'Windows_NT') {
             /* S.O WINDOWS */
-            $parseUrl = substr_replace($parseUrl['path'], '', -1);
-        }         
+            $parseUrl['path'] = substr_replace($parseUrl['path'], '', -1);
+        }       
 
         /* Define o prefixo */
         $this->prefix = $parseUrl['path'] ?? '';
