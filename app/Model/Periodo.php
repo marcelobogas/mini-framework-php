@@ -5,7 +5,26 @@ namespace App\Model;
 use App\Core\Database;
 
 class Periodo
-{    
+{        
+    /**
+     * identificador do registro
+     *
+     * @var integer
+     */
+    public $id;
+    
+    /**
+     * descricao do período
+     *
+     * @var string
+     */
+    public $descricao;
+
+    public function __construct()
+    {
+        //..
+    }
+
     /**
      * Método responsável por obter os registros no banco
      *

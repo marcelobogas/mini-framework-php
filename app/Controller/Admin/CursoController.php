@@ -6,6 +6,7 @@ use App\Core\Controller;
 use App\Core\View;
 use App\Model\Curso;
 use App\Http\Request;
+use App\Model\Periodo;
 
 class CursoController extends Controller
 {
@@ -19,11 +20,43 @@ class CursoController extends Controller
     {
         /* view de cursos */
         $content = View::render('pages/curso/home',[
-            'itens' => self::getCursosItems($request),
+            'itens' => self::getAll($request),
         ]);
 
         /* retorna a view da página */
         return parent::getPage('Mini Framework Php - Cursos', $content);
+    }
+    
+    /**
+     * Método responsável por retornar todos os registros
+     *
+     * @param Request $request 
+     *
+     * @return string
+     */
+    public static function getAll($request) {
+        $itens = '';
+
+        /* resultados da página */
+        $results = Curso::getCursos(null, 'descricao', null, '*');
+
+        /* renderiza o item */
+        while ($objCurso = $results->fetchObject(Curso::class)) {
+            /* obtém o período referente ao curso */
+            $resultPeriodo = Periodo::getPeriodos('id = ' . $objCurso->idPeriodo, null, null, '*');
+            $objPeriodo = $resultPeriodo->fetchObject(Periodo::class);
+
+            $itens .= View::render('pages/curso/table', [
+                'id'        => $objCurso->id,
+                'idPeriodo' => $objCurso->idPeriodo,
+                'descricao' => $objCurso->descricao,
+                'ativo'     => $objCurso->ativo = 's' ? 'Ativo' : 'Inativo',
+                'descricaoPeriodo' => $objPeriodo->descricao,
+            ]);
+        }
+
+        /* retorna a lista de cursos */
+        return $itens;
     }
 
     /**

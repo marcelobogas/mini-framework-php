@@ -36,14 +36,14 @@ class Curso
      *
      * @return boolean
      */
-    public static function cadastrar()
+    public function cadastrar()
     {
         /* insere um registro no banco */
-        /* $this->id = (new Database('cursos'))->insert([
+        $this->id = (new Database('cursos'))->insert([
             'idPeriodo' => $this->idPeriodo,
             'descricao' => $this->descricao,
             'ativo' => $this->ativo
-        ]); */
+        ]);
 
         /* retorna sucesso */
         return true;
