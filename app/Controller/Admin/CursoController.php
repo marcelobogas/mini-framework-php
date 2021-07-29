@@ -19,26 +19,47 @@ class CursoController extends Controller
     public static function getCurso($request)
     {
         /* view de cursos */
-        $content = View::render('pages/curso/home',[
-            'itens' => self::getAll($request),
+        $content = View::render('pages/curso/home', [
+            'itens'        => self::getCursoItens($request),
+            'itensPeriodo' => self::getPeriodosItens(),
         ]);
 
         /* retorna a view da página */
         return parent::getPage('Mini Framework Php - Cursos', $content);
     }
-    
+
     /**
-     * Método responsável por retornar todos os registros
+     * Método responsável por obter os dados do formulário via POST
      *
-     * @param Request $request 
+     * @param Request $request
      *
      * @return string
      */
-    public static function getAll($request) {
+    public static function cursoPesquisar($request)
+    {
         $itens = '';
 
+        /* dados do POST */
+        $postVars = $request->getPostVars();
+
+        $filtroPesquisa = $postVars['inputPesquisa'] ?? '';
+        $filtroPeriodo  = $postVars['periodo'] ?? '';
+        $filtroStatus   = $postVars['status'] ?? '';
+
+        $condicoes = [
+            strlen($filtroPesquisa) ? 'descricao like "%' . str_replace(' ', '%', $filtroPesquisa) . '%"' : null,
+            strlen($filtroPeriodo) ? 'idPeriodo = ' . $filtroPeriodo  : null,
+            strlen($filtroStatus) ? 'ativo = "' . $filtroStatus . '"' : null,
+        ];
+
+        /* remove as posições vazias do array */
+        $condicoes = array_filter($condicoes);
+
+        /* cláusulas where */
+        $where = implode(' AND ', $condicoes);
+
         /* resultados da página */
-        $results = Curso::getCursos(null, 'descricao', null, '*');
+        $results = Curso::getCursos($where, 'descricao', null, '*');
 
         /* renderiza o item */
         while ($objCurso = $results->fetchObject(Curso::class)) {
@@ -47,25 +68,32 @@ class CursoController extends Controller
             $objPeriodo = $resultPeriodo->fetchObject(Periodo::class);
 
             $itens .= View::render('pages/curso/table', [
-                'id'        => $objCurso->id,
-                'idPeriodo' => $objCurso->idPeriodo,
-                'descricao' => $objCurso->descricao,
-                'ativo'     => $objCurso->ativo = 's' ? 'Ativo' : 'Inativo',
+                'id'               => $objCurso->id,
+                'idPeriodo'        => $objCurso->idPeriodo,
+                'descricao'        => $objCurso->descricao,
+                'ativo'            => $objCurso->ativo == 's' ? 'Ativo' : 'Inativo',
                 'descricaoPeriodo' => $objPeriodo->descricao,
             ]);
         }
 
-        /* retorna a lista de cursos */
-        return $itens;
+        /* view de cursos */
+        $content = View::render('pages/curso/home', [
+            'itens' => $itens,
+            'itensPeriodo' => self::getPeriodosItens(),
+        ]);
+
+        /* retorna a view da página */
+        return parent::getPage('Mini Framework Php - Cursos', $content);
     }
 
     /**
-     * Método responsável por obter a renderização dos itens da Model Curso
-     * 
-     * @param Request $request
+     * Método responsável por retornar todos os registros
+     *
+     * @param Request $request 
+     *
      * @return string
      */
-    private static function getCursosItems($request)
+    public static function getCursoItens($request)
     {
         $itens = '';
 
@@ -80,19 +108,24 @@ class CursoController extends Controller
         //$objPagination = new Pagination($qtdeTotal, $paginaAtual, 15);
 
         /* resultados da página */
-        $results = Curso::getCursos('ativo = "s"', 'descricao');
+        $results = Curso::getCursos(null, 'descricao', null, '*');
 
         /* renderiza o item */
         while ($objCurso = $results->fetchObject(Curso::class)) {
-            $itens .= View::render('pages/itemEstado', [
-                'id'        => $objCurso->id,
-                'idPeriodo' => $objCurso->idPeriodo,
-                'descricao' => $objCurso->descricao,
-                'ativo'     => $objCurso->ativo
+            /* obtém o período referente ao curso */
+            $resultPeriodo = Periodo::getPeriodos('id = ' . $objCurso->idPeriodo, null, null, '*');
+            $objPeriodo = $resultPeriodo->fetchObject(Periodo::class);
+
+            $itens .= View::render('pages/curso/table', [
+                'id'               => $objCurso->id,
+                'idPeriodo'        => $objCurso->idPeriodo,
+                'descricao'        => $objCurso->descricao,
+                'ativo'            => $objCurso->ativo == 's' ? 'Ativo' : 'Inativo',
+                'descricaoPeriodo' => $objPeriodo->descricao,
             ]);
         }
 
-        /* retorna a lista de estados */
+        /* retorna a lista de cursos */
         return $itens;
     }
 
@@ -117,18 +150,27 @@ class CursoController extends Controller
         return self::getCurso($request);
     }
 
-    public static function editCurso()
+    /**
+     * Método responsável por obter a renderização dos itens da Model Periodo
+     *
+     * @return string
+     */
+    private static function getPeriodosItens()
     {
+        $itens = '';
 
-    }
+        /* resultados da página */
+        $results = Periodo::getPeriodos(null, 'descricao');
 
-    public static function updateCurso($id)
-    {
+        /* renderiza o item */
+        while ($objPeriodo = $results->fetchObject(Periodo::class)) {
+            $itens .= View::render('pages/curso/itemPeriodo', [
+                'id' => $objPeriodo->id,
+                'descricao' => $objPeriodo->descricao,
+            ]);
+        }
 
-    }
-
-    public static function deleteCurso($id)
-    {
-
+        /* retorna a lista de períodos */
+        return $itens;
     }
 }

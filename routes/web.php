@@ -1,42 +1,6 @@
 <?php
 
-use App\Controller\Admin\CursoController;
-use App\Controller\Pages\HomeController;
-use App\Controller\Auth\LoginController;
-use App\Controller\Auth\ResetPasswordController;
-use App\Http\Response;
-
-/* Rota da Home */
-$objRouter->get('/', [
-    function () {
-        return new Response(200, HomeController::getHome());
-    }
-]);
-
-/* Rota dinâmica */
-$objRouter->get('/pagina/{idPagina}/{acao}', [
-    function ($idPagina, $acao) {
-        return new Response(200, 'Página ' . $idPagina . ' - ' . $acao);
-    }
-]);
-
-/* Rota de Login */
-$objRouter->get('/login', [
-    function () {
-        return new Response(200, LoginController::getLogin());
-    }
-]);
-
-/* Rota para redefinir a senha */
-$objRouter->get('/reset-password', [
-    function () {
-        return new Response(200, ResetPasswordController::getResetPassword());
-    }
-]);
-
-/* Rota de Cursos */
-$objRouter->get('/cursos', [
-    function ($request) {
-        return new Response(200, CursoController::getCurso($request));
-    }
-]);
+include __DIR__ . '/home/home.php';
+include __DIR__ . '/dinamica/rotaDinamica.php';
+include __DIR__ . '/login/login.php';
+include __DIR__ . '/curso/curso.php';

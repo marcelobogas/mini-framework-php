@@ -37,7 +37,7 @@ class HomeController extends Controller
         $itens = '';
 
         /* resultados da página */
-        $results = Curso::getCursos('ativo = "s"', 'descricao');
+        $results = Curso::getCursos(null, 'descricao');
 
         /* renderiza o item */
         while ($objCurso = $results->fetchObject(Curso::class)) {

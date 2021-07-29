@@ -1,38 +1,70 @@
 <div class="container">
-    <div class="text-center p-3">
+    <div class="text-center py-3">
         <h3>CADASTRO DE CURSOS</h3>
     </div>
-    <div class="row pb-2">
-        <div class="col-6">
-            <div class="input-group">
-                <div class="input-group-text"><i class="bi bi-search"></i></div>
-                <input type="text" class="form-control" id="inlineFormInputGroupUsername"
-                    placeholder="Pesquise aqui...">
+    <form action="{{url}}/cursosPesquisar" method="POST">
+        <div class="row pb-2">
+            <div class="col">
+                <input type="text" class="form-control" name="inputPesquisa"
+                    placeholder="Filtrar pelo nome do Curso...">
+            </div>
+            <div class="col col-sm-2">
+                <select class="form-control" name="periodo">
+                    <option value="" selected>Filtro Período...</option>
+                    {{itensPeriodo}}
+                </select>
+            </div>
+            <div class="col col-sm-2">
+                <select class="form-control" name="status">
+                    <option value="">Ativo/Inativo</option>
+                    <option value="s">Ativo</option>
+                    <option value="n">Inativo</option>
+                </select>
+            </div>
+            <div class="col d-flex align-items-center">
+                <button type="submit" class="btn btn-sm btn-primary">
+                    <i class="bi bi-search"></i>&nbsp;Filtar
+                </button>
             </div>
         </div>
-        <div class="col-4"></div>
-        <div class="col-2">
-            <div class="text-center">
-                <input type="button" value="Cadastrar" class="btn btn-sm btn-success">
-            </div>
-        </div>
-    </div>
-    <div class="row pb-3">
-        <div class="col"></div>
-        <div class="col-10">
-            <table class="table-sm">
-                <thead class="table-primary">
-                    <tr>
-                        <th scope="col" width="10%">Código</th>
-                        <th scope="col" width="40%">Descrição</th>
-                        <th scope="col" width="20%">Período</th>
-                        <th scope="col" width="15%">Status</th>
-                        <th scope="col" width="15%" class="text-center">Ações</th>
-                    </tr>
-                </thead>
+    </form>
+    <div class="row">
+        <table class="table table-striped border-bottom">
+            <thead class="table-primary">
+                <tr>
+                    <th scope="col" width="10%">Código</th>
+                    <th scope="col" width="50%">Descrição do Curso</th>
+                    <th scope="col" width="20%">Período</th>
+                    <th scope="col" width="10%">Status</th>
+                    <th scope="col" width="10%" colspan="2" class="text-center">
+                        <a href="">
+                            <button class="btn btn-sm btn-success"><i class="bi bi-plus-lg"></i>&nbsp;Cadastrar</button>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
                 {{itens}}
-            </table>
-        </div>
-        <div class="col"></div>
+            </tbody>
+        </table>
+    </div>
+    <div class="d-flex justify-content-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
