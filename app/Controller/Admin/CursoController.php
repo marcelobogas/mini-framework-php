@@ -105,7 +105,7 @@ class CursoController extends Controller
         $paginaAtual = $queryParams['page'] ?? 1;
 
         /* Instância de Paginação */
-        //$objPagination = new Pagination($qtdeTotal, $paginaAtual, 15);
+        //$objPagination = new Pagination($qtdeTotal, $paginaAtual, 5);
 
         /* resultados da página */
         $results = Curso::getCursos(null, 'descricao', null, '*');

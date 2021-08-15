@@ -3,7 +3,6 @@
 namespace App\Model;
 
 use App\Core\Database;
-use PDO;
 
 class Curso
 {
@@ -50,7 +49,7 @@ class Curso
     }
 
     /**
-     * Método responsável por obter o registros no banco
+     * Método responsável por obter os registros do banco
      *
      * @param  string $where
      * @param  string $order
